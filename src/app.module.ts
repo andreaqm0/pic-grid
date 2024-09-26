@@ -5,6 +5,9 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { PicturesModule } from './pictures/pictures.module';
+import { CollectionsModule } from './collections/collections.module';
+import { CommentsModule } from './comments/comments.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -27,6 +30,9 @@ import configuration from './config/configuration';
     }),
     AuthModule,
     UsersModule,
+    PicturesModule,
+    CollectionsModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
