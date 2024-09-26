@@ -5,9 +5,11 @@ import {
   Column,
   DataType,
   ForeignKey,
+  HasMany,
   Model,
 } from 'sequelize-typescript';
 import { Collection } from 'src/collections/entities/collection.entity';
+import { Comment } from 'src/comments/entities/comment.entity';
 import { PictureCollection } from 'src/db/many-to-many/picture-collection.table';
 import { User } from 'src/users/entities/user.entity';
 
@@ -59,6 +61,9 @@ export class Picture extends Model {
 
   @BelongsToMany(() => Collection, () => PictureCollection)
   collections: Collection[];
+
+  @HasMany(() => Comment)
+  comments: Comment[];
 
   declare createdAt: CreationOptional<Date>;
   declare updatedAt: CreationOptional<Date>;

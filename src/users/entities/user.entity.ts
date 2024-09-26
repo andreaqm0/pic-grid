@@ -1,5 +1,7 @@
 import { CreationOptional } from 'sequelize';
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import { Collection } from 'src/collections/entities/collection.entity';
+import { Picture } from 'src/pictures/entities/picture.entity';
 
 @Table
 export class User extends Model {
@@ -36,6 +38,12 @@ export class User extends Model {
 
   @Column({ allowNull: false, validate: { notEmpty: true } })
   fullname: string;
+
+  @HasMany(() => Picture)
+  pictures: Picture[];
+
+  @HasMany(() => Collection)
+  collections: Collection[];
 
   declare createdAt: CreationOptional<Date>;
   declare updatedAt: CreationOptional<Date>;
